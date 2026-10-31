@@ -80,6 +80,18 @@ Se realizaron ajustes en la interacción con los elementos de la página y se ve
 **Limitación pendiente:** aunque la última ejecución terminó correctamente, durante las pruebas manuales se observó que la aplicación rechazaba el número telefónico utilizado. Por esta razón, la validación telefónica y la recuperación del código deben considerarse un punto pendiente de verificación. No se afirma que el flujo completo de confirmación telefónica haya quedado validado.
 
 La función `retrieve_phone_code()` proporcionada en el proyecto se conservó sin modificaciones.
+### Incidencia identificada: validación del teléfono
+
+Durante la ejecución de la prueba automatizada se presentó una dificultad en el proceso de registro del número telefónico.
+
+- La aplicación mostró el mensaje «Introduce el número correcto» al ingresar el número configurado en `data.py`.
+- Debido a que el número no fue aceptado, no se generó el código de confirmación.
+- El método `retrieve_phone_code()` no pudo recuperar el código, generando una excepción.
+- Se verificó la interacción con los botones de ingreso y confirmación del teléfono, pero el inconveniente persistió.
+
+**Estado:** incidencia pendiente de resolución. Se requiere validar el formato del número telefónico aceptado por la aplicación y repetir esta parte de la prueba.
+
+**Resultado de la última ejecución registrada:** 1 prueba aprobada (`1 passed`). Este resultado corresponde a la ejecución posterior a los ajustes realizados, pero no demuestra que el flujo de validación telefónica haya quedado resuelto.
 
 ## 8. Control de versiones
 
